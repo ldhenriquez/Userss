@@ -1,0 +1,59 @@
+<h1>USERS</h1>
+
+<form [formGroup] ="myform">
+  <h2>Formulario</h2>
+  <p>
+    
+    Nombre: <br/>
+    <input type="text" name="name" id="name" formControlName="name">
+  </p>
+  <p>
+    Apellido: <br/>
+    <input type="text" name="lastname" id="lastname" formControlName="lastname">
+  </p>
+  <p>
+    Email: <br/>
+    <input type="email" name="email" id="email" formControlName="email" >
+  </p>
+  <p> 
+    Identificación: <br/>
+    <input type="text" name="identification" id="identification" formControlName="identification">
+  </p>
+  <p>
+    Teléfono: <br/>
+    <input type="text" name="phone" id="phone" formControlName="phone">
+  </p>
+  
+  <button *ngIf="!isUpdate"  (click)="saveuser()" class="btn btn-primary" >Guardar</button>
+  <button  *ngIf="isUpdate" (click)="saveactuser()" class="btn btn-primary">Actualizar</button>
+  <button  *ngIf="isUpdate" (click)="reset()" class="btn btn-primary">Cancelar</button>
+</form>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Email</th>
+      <th scope="col">Identificación</th>
+      <th scope="col">Telefóno</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor = "let user of listuser">
+      <td scope="row">{{ user._id }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.lastname }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.identification }}</td>
+      <td>{{ user.phone }}</td>
+      <td>
+        <i (click)="cambiaruser(user)" class="fas fa-pen-square"></i>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
